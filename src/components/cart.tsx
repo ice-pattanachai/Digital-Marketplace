@@ -1,12 +1,15 @@
 "use client"
 
 import { ShoppingCart } from "lucide-react"
-import { Sheet , SheetTrigger , SheetContent , SheetHeader , SheetTitle } from "./ui/sheet"
+import { Sheet , SheetTrigger , SheetContent , SheetHeader , SheetTitle , SheetFooter} from "./ui/sheet"
 import { Separator } from "./ui/separator"
 import { formatPrice } from "@/lib/utils"
+import { buttonVariants } from "./ui/button"
+import Link from "next/link"
+import Image from 'next/image'
 
 const Cart = () => {
-    const itemCount: number = 1
+    const itemCount: number = 0
     const fee: number = 1
 
     return (
@@ -29,113 +32,49 @@ const Cart = () => {
                         Cart (0)
                     </SheetTitle>
                 </SheetHeader>
-                {/* {itemCount > 0 ? (
-                <>
-                    <div className='flex w-full flex-col pr-6'>
-                    <ScrollArea>
-                        {items.map(({ product }) => (
-                        <CartItem
-                            product={product}
-                            key={product.id}
-                        />
-                        ))}
-                    </ScrollArea>
-                    </div>
-                    <div className='space-y-4 pr-6'>
-                    <Separator />
-                    <div className='space-y-1.5 text-sm'>
-                        <div className='flex'>
-                        <span className='flex-1'>Shipping</span>
-                        <span>Free</span>
-                        </div>
-                        <div className='flex'>
-                        <span className='flex-1'>
-                            Transaction Fee
-                        </span>
-                        <span>{formatPrice(fee)}</span>
-                        </div>
-                        <div className='flex'>
-                        <span className='flex-1'>Total</span>
-                        <span>
-                            {formatPrice(cartTotal + fee)}
-                        </span>
-                        </div>
-                    </div>
-
-                    <SheetFooter>
-                        <SheetTrigger asChild>
-                        <Link
-                            href='/cart'
-                            className={buttonVariants({
-                            className: 'w-full',
-                            })}>
-                            Continue to Checkout
-                        </Link>
-                        </SheetTrigger>
-                    </SheetFooter>
-                    </div>
-                </>
-                ) : (
-                <div className='flex h-full flex-col items-center justify-center space-y-1'>
-                    <div
-                    aria-hidden='true'
-                    className='relative mb-4 h-60 w-60 text-muted-foreground'>
-                    <Image
-                        src='/hippo-empty-cart.png'
-                        fill
-                        alt='empty shopping cart hippo'
-                    />
-                    </div>
-                    <div className='text-xl font-semibold'>
-                    Your cart is empty
-                    </div>
-                    <SheetTrigger asChild>
-                    <Link
-                        href='/products'
-                        className={buttonVariants({
-                        variant: 'link',
-                        size: 'sm',
-                        className:
-                            'text-sm text-muted-foreground',
-                        })}>
-                        Add items to your cart to checkout
-                    </Link>
-                    </SheetTrigger>
-                </div>
-                )} */}
                 {itemCount > 0 ? (
-                <>
-                    <div className='flex w-full flex-col pr-6'></div>
-                    <div className='space-y-4 pr-6'>
-                    <Separator />
-                    <div className='space-y-1.5 text-sm'>
-                        <div className='flex'>
-                            <span className='flex-1'>Shipping</span>
-                            <span>Free</span>
+                    <>
+                        <div className='flex w-full flex-col pr-6'></div>
+                        <div className='space-y-4 pr-6'>
+                        <Separator />
+                        <div className='space-y-1.5 text-sm'>
+                            <div className='flex'>
+                                <span className='flex-1'>Shipping</span>
+                                <span>Free</span>
+                            </div>
+                            <div className='flex'>
+                                <span className='flex-1'>Transaction Fee</span>
+                                <span>{formatPrice(fee)}</span>
+                            </div>
+                            <div className='flex'>
+                                <span className='flex-1'>Total</span>
+                                <span>{formatPrice(fee)}</span>
+                            </div>
                         </div>
-                        <div className='flex'>
-                            <span className='flex-1'>Transaction Fee</span>
-                            <span>{formatPrice(fee)}</span>
-                        </div>
-                        <div className='flex'>
-                            <span className='flex-1'>Total</span>
-                            <span>{formatPrice(fee)}</span>
-                        </div>
-                      
-                    </div>
+                        <SheetFooter>
+                            <SheetTrigger asChild>
+                                <Link href='/cart' className={buttonVariants({
+                                    className: 'w-full' ,
+                                })}>
+                                    Continue to Checkout
+                                </Link>
+                            </SheetTrigger>
+                        </SheetFooter>
 
-                   
-                    </div>
-                </>
+                    
+                        </div>
+                    </>
                 ) : (
                 <div className='flex h-full flex-col items-center justify-center space-y-1'>
                     <div
-                    aria-hidden='true'
-                    className='relative mb-4 h-60 w-60 text-muted-foreground'>
-                   
+                        aria-hidden='true'
+                        className='relative mb-4 h-60 w-60 text-muted-foreground'>
+                        <Image src='/L.png' 
+                        fill
+                        alt='empty shopping cart'/>
                     </div>
                     <div className='text-xl font-semibold'>
-                    Your cart is empty
+                        
                     </div>
                     <SheetTrigger asChild>
                    
